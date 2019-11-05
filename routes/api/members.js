@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
 // Delete Member
 router.delete('/:id', (req, res, id) => {
     deleteMembersById(req.params.id).then((response)=> {
-        
+        //test comment
         if (response.affectedRows > 0){
             res.sendStatus(200);
         } else {
