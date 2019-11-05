@@ -1,0 +1,44 @@
+<h1 class="text-center mb-3">{{title}}</h1>
+<form action="/api/members" method="POST" class="mb4">
+<div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" class="form-control">
+</div>
+<div class="form-group">
+    <label for="address">Address</label>
+    <input type="address" name="address" class="form-control">
+</div>
+
+    <input type="submit" value="Add Member" class="btn btn-primary btn-block">
+
+</form>
+<H4>Members</H4>
+<ul>
+    {{#each members}}
+
+    <li class="list-group-item">{{this.name}}, {{this.address}}, {{this.id}}, Luotu: {{this.createdAt}} <input id="demo" type="button" value="Delete" onclick = "myScript('{{this.id}}')" class="btn btn-danger"></li>
+
+    {{/each}}
+</ul>
+
+<script>
+    function myScript(id){
+          var xhttp = new XMLHttpRequest();
+          
+          if (id !== undefined && id !== null) {
+                xhttp.open(
+                    "DELETE",
+                    "/api/members/" + id,
+                    false
+                )
+                    xhttp.send();
+
+                    if (xhttp.status === 200) {
+                        document.location.reload()
+                                        
+                    } 
+        } 
+    }
+</script>
+
+<a href="/api/members" class="btn btn-light mt-4">Visit API</a>
